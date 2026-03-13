@@ -521,6 +521,7 @@ const FocusTimer = (() => {
     stop();
     remainingSeconds = 0;
     updateDisplay();
+    updateButtonStates(); // Update button states when timer completes
     
     // Visual indication
     if (timerDisplayElement) {
@@ -542,12 +543,15 @@ const FocusTimer = (() => {
     const stopBtn = document.getElementById('timer-stop');
     const resetBtn = document.getElementById('timer-reset');
     
+    // When timer reaches 00:00, disable start and stop buttons
+    const timerCompleted = remainingSeconds <= 0;
+    
     if (startBtn) {
-      startBtn.disabled = isRunning;
+      startBtn.disabled = isRunning || timerCompleted;
     }
     
     if (stopBtn) {
-      stopBtn.disabled = !isRunning;
+      stopBtn.disabled = !isRunning || timerCompleted;
     }
     
     if (resetBtn) {
@@ -596,7 +600,7 @@ const FocusTimer = (() => {
     stop();
     remainingSeconds = configuredDuration;
     updateDisplay();
-    updateButtonStates();
+    updateButtonStates(); // Ensure buttons are re-enabled after reset
   };
 
   /**
