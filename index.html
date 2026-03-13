@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A productivity dashboard with focus timer, task management, and quick links">
+    <title>Productivity Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <button id="theme-toggle" aria-label="Toggle between light and dark theme">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Greeting Display Section -->
+        <section id="greeting-section" class="greeting">
+            <div id="greeting-display" class="greeting__text">
+                <span id="greeting-message">Good morning</span>
+                <button id="name-edit-btn" class="greeting__edit-btn" aria-label="Edit name">✏️</button>
+            </div>
+            <div id="name-input-container" class="greeting__name-input" hidden>
+                <input type="text" id="name-input" placeholder="Enter your name" aria-label="Your name">
+                <button id="name-save-btn" class="btn btn--small">Save</button>
+                <button id="name-cancel-btn" class="btn btn--small btn--secondary">Cancel</button>
+            </div>
+            <time id="time-display" class="greeting__time">00:00:00</time>
+            <time id="date-display" class="greeting__date">Loading...</time>
+        </section>
+
+        <!-- Focus Timer Section -->
+        <section id="timer-section" class="timer">
+            <h2 class="timer__heading">Focus Timer</h2>
+            <div id="timer-display" class="timer__display" aria-live="polite" aria-atomic="true">25:00</div>
+            <div class="timer__controls">
+                <button id="timer-start" class="btn btn--primary" aria-describedby="timer-display">Start</button>
+                <button id="timer-stop" class="btn btn--secondary" aria-describedby="timer-display">Stop</button>
+                <button id="timer-reset" class="btn btn--secondary" aria-describedby="timer-display">Reset</button>
+            </div>
+            <div class="timer__config">
+                <button id="timer-config-btn" class="btn btn--small" aria-label="Configure timer duration">⚙️ Configure</button>
+                <div id="timer-config-container" class="timer__config-form" hidden>
+                    <label for="timer-duration-input">Duration (1-180 minutes):</label>
+                    <input type="number" id="timer-duration-input" min="1" max="180" value="25" aria-label="Timer duration in minutes (max 180)">
+                    <button id="timer-duration-save" class="btn btn--small">Save</button>
+                    <button id="timer-duration-cancel" class="btn btn--small btn--secondary">Cancel</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Task List Section -->
+        <section id="tasks-section" class="tasks">
+            <h2 class="tasks__heading">Tasks</h2>
+            <form id="task-form" class="tasks__form">
+                <input type="text" id="task-input" class="tasks__input" placeholder="Add a new task..." aria-label="New task" required>
+                <button type="submit" class="btn btn--primary">Add Task</button>
+            </form>
+            <ul id="task-list" class="tasks__list" aria-label="Task list">
+                <!-- Tasks will be dynamically inserted here -->
+            </ul>
+        </section>
+
+        <!-- Quick Links Section -->
+        <section id="links-section" class="links">
+            <h2 class="links__heading">Quick Links</h2>
+            <form id="link-form" class="links__form">
+                <input type="text" id="link-name-input" class="links__input" placeholder="Link name..." aria-label="Link name" required>
+                <input type="url" id="link-url-input" class="links__input" placeholder="https://..." aria-label="Link URL" required>
+                <button type="submit" class="btn btn--primary">Add Link</button>
+            </form>
+            <ul id="link-list" class="links__list" aria-label="Quick links">
+                <!-- Links will be dynamically inserted here -->
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p class="footer__text">Productivity Dashboard - All data stored locally</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
